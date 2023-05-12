@@ -6,3 +6,4 @@ vendor
 proxy.json
 src/core
 .idea
+docker/db/data.sql
