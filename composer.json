@@ -1,0 +1,48 @@
+{
+    "name": "zose43/search-systems-kermel-full",
+    "description": "Package of kernel search systems and their deps for tests",
+    "type": "library",
+    "minimum-stability": "dev",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.0",
+        "yiisoft/yii2": "~2.0.47",
+        "vlucas/phpdotenv": "5.5.x-dev",
+        "yiisoft/yii2-redis": "2.0.x-dev",
+        "digitalreputationcorp/search_systems": "@dev",
+        "digitalreputationcorp/helpers": "@dev",
+        "digitalreputationcorp/wikipedia": "@dev",
+        "digitalreputationcorp/simhashphp": "@dev"
+    },
+    "require-dev": {
+        "yiisoft/yii-testing": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@git.dgt-soft.ru:2222/DR/search_systems.git"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@git.dgt-soft.ru:2222/DR/php-yii2-helpers.git"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@git.dgt-soft.ru:2222/DR/wikipedia-parser.git"
+        },
+        {
+            "type": "vcs",
+            "url": "ssh://git@git.dgt-soft.ru:2222/DR/simhashphp.git"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "yiisoft/config": true
+        }
+    }
+}

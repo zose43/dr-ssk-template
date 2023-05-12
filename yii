@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types = 1);
+
+use yii\console\Application;
+
+const YII_ENV = 'dev';
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/yiisoft/yii2/Yii.php';
+
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->safeLoad();
+$config = require('config/console.php');
+
+$application = new Application($config);
+
+$exitCode = $application->run();
+exit($exitCode);

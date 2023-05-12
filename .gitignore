@@ -1,0 +1,8 @@
+.env
+.merge-plan.php
+dev
+php
+vendor
+proxy.json
+src/core
+.idea
