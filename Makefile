@@ -1,6 +1,9 @@
-init: docker-down-clear docker-pull docker-build-pull docker-up
+init: docker-down-clear docker-pull docker-build-pull docker-up composer-install
 down: docker-down-clear
-check: lint analyze test
+up: docker-up
+
+ya: search-yandex
+gg: search-google
 
 docker-down-clear:
 	docker-compose down -v --remove-orphans
@@ -17,8 +20,6 @@ docker-up:
 docker-rebuild:
 	docker-compose up --build -d
 
-app-init: composer-install
-
 composer-install:
 	docker-compose run --rm php-cli composer install --ignore-platform-reqs --no-scripts
 
@@ -28,11 +29,9 @@ composer-update:
 test:
 	docker-compose run --rm php-cli composer test
 
-lint:
-	docker-compose run --rm php-cli composer php-cs-fixer fix -- --diff --dry-run
+# Parser search commands
+search-yandex:
+	docker-compose exec php-fpm sh -l -c "yii search/yandex"
 
-cs-fix:
-	docker-compose run --rm php-cli composer php-cs-fixer fix
-
-analyze:
-	docker-compose run --rm php-cli composer psalm -- --no-diff
+search-google:
+	docker-compose exec php-fpm sh -l -c "yii search/google"
