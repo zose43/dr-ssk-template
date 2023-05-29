@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 use yii\console\Application;
 
-const YII_ENV = 'dev';
+$_ENV['YII_ENV'] = 'dev';
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/vendor/yiisoft/yii2/Yii.php';
