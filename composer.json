@@ -14,7 +14,9 @@
         "digitalreputationcorp/simhashphp": "@dev"
     },
     "require-dev": {
-        "yiisoft/yii-testing": "dev-master"
+        "yiisoft/yii-testing": "dev-master",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "vimeo/psalm": "^5.9"
     },
     "repositories": [
         {
@@ -38,6 +40,9 @@
             "url": "ssh://git@git.dgt-soft.ru:2222/DR/simhashphp.git"
         }
     ],
+    "scripts": {
+        "test": "phpunit --colors=always"
+    },
     "config": {
         "allow-plugins": {
             "yiisoft/yii2-composer": true,
