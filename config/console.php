@@ -12,6 +12,7 @@ $config = [
     'controllerNamespace' => 'app\src\commands',
     'aliases' => [
         '@tests' => '@app/tests',
+        '@dump' => '@app/dev'
     ],
     'bootstrap' => [
         Bootstrapper::class,
