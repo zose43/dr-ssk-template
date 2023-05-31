@@ -2,8 +2,10 @@
 
 namespace app\src\commands;
 
+use Yii;
 use yii\console\Controller;
 use Yiisoft\Yii\Console\ExitCode;
+use digitalreputationcorp\search_systems\SearchSiteParsable;
 use digitalreputationcorp\search_systems\models\SearchResultModel;
 use digitalreputationcorp\search_systems\models\DTO\ParserTransferModel;
 
@@ -16,8 +18,7 @@ class SearchController extends Controller
         $dto->searchQuery = '';     // add searchQuery
 
         $parser = $dto->getSearchParser();
-        $parser->parseSearchResult();
-        $parser->parseHtmlPages();
+        $this->setHTML($parser, $dto);
 
         return ExitCode::OK;
     }
@@ -29,9 +30,22 @@ class SearchController extends Controller
         $dto->searchQuery = '';     // add searchQuery
 
         $parser = $dto->getSearchParser();
-        $parser->parseSearchResult();
-        $parser->parseHtmlPages();
+        $this->setHTML($parser, $dto);
 
         return ExitCode::OK;
+    }
+
+    private function setHTML(SearchSiteParsable $parser, ParserTransferModel $dto): void
+    {
+        $pages = Yii::$app->cache
+            ->getOrSet($dto->country . $dto->system . $dto->searchQuery, function () use ($parser) {
+                $parser->parseSearchResult();
+                if ($result = $parser->getSearchHtml()) {
+                    return $result;
+                }
+                return false;
+            }, 60 * 60 * 4);
+
+        $parser->setSearchHtml($pages);
     }
 }
