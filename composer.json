@@ -14,9 +14,7 @@
         "digitalreputationcorp/simhashphp": "@dev"
     },
     "require-dev": {
-        "yiisoft/yii-testing": "dev-master",
-        "psalm/plugin-phpunit": "^0.18.4",
-        "vimeo/psalm": "^5.9"
+        "yiisoft/yii-testing": "dev-master"
     },
     "repositories": [
         {
