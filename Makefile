@@ -29,6 +29,9 @@ composer-update:
 test:
 	docker-compose run --rm php-cli composer test
 
+flush:
+	docker-compose exec php-fpm sh -l -c "yii cache/flush-all"
+
 # Parser search commands
 search-yandex:
 	docker-compose exec php-fpm sh -l -c "yii search/yandex"
