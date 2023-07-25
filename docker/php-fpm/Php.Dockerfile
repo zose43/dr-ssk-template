@@ -10,7 +10,10 @@ RUN echo 'alias yii="php yii"' >> /var/www/.bashrc
 # procps --> ps, kill commands for monitorng processes
 # libgl1 --> for python computer vision (captcha)
 # wget --> for download
-RUN apt-get update && apt-get install -y libgl1 \
+# libpq-dev --> postgres
+RUN apt-get update && apt-get install -y \
+  libgl1 \
+  libpq-dev \
 	&& docker-php-ext-install pdo pdo_pgsql \
 	&& pecl install xdebug \
 	&& docker-php-ext-enable xdebug
