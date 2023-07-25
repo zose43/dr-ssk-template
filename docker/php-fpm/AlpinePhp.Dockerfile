@@ -8,6 +8,12 @@ RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 RUN echo 'alias yii="php yii"' >> ~/.profile
 RUN echo 'alias selenium="./vendor/digitalreputationcorp/search_systems/src/webdriver/chromedriver112 --port=4444"' >> ~/.profile
 
+# Install python and pip, install requirements
+#RUN apk add --update --no-cache python3 py3-opencv\
+#    && ln -sf python3 /usr/bin/python \
+#    && python3 -m ensurepip \
+#    && pip3 install --no-cache --upgrade pip setuptools Pillow
+
 # xdebug install
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && apk add --update linux-headers \
