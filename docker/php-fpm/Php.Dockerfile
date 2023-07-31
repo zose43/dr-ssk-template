@@ -14,7 +14,11 @@ RUN echo 'alias yii="php yii"' >> /var/www/.bashrc
 RUN apt-get update && apt-get install -y \
   libgl1 \
   libpq-dev \
-	&& docker-php-ext-install pdo pdo_pgsql \
+  unzip \
+  libzip-dev \
+  zlib1g-dev \
+  libzip-dev \
+	&& docker-php-ext-install pdo pdo_pgsql zip \
 	&& pecl install xdebug \
 	&& docker-php-ext-enable xdebug
 
