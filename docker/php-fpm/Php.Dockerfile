@@ -11,13 +11,13 @@ RUN echo 'alias yii="php yii"' >> /var/www/.bashrc
 # libgl1 --> for python computer vision (captcha)
 # wget --> for download
 # libpq-dev --> postgres
+# libicu-dev --> for intl extension (work with locals)
 RUN apt-get update && apt-get install -y \
   libgl1 \
   libpq-dev \
-  unzip \
-  libzip-dev \
   zlib1g-dev \
   libzip-dev \
+  libicu-dev \
 	&& docker-php-ext-install pdo pdo_pgsql zip \
 	&& pecl install xdebug \
 	&& docker-php-ext-enable xdebug
@@ -39,7 +39,7 @@ RUN usermod -u 1000 -d /var/www/ www-data \
   && chown -R www-data:www-data /var/www
 
 # intl --> operations with locale or dependency from locale
-#RUN docker-php-ext-configure intl && docker-php-ext-install intl
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
 # sockets use for chrome-binary (docker-php-ext-install sockets)
 RUN docker-php-ext-install sockets
