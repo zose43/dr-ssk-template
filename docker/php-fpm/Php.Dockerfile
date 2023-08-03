@@ -3,6 +3,8 @@ FROM php:8.0-fpm
 #alias
 RUN echo 'alias yii="php yii"' >> /var/www/.bashrc
 
+WORKDIR /app
+
 # wv --> ms doc,docx
 # libkrb5-dev && libc-client-dev --> required for imap extension
 # poppler-utils --> pdf
