@@ -26,6 +26,9 @@ composer-install:
 composer-update:
 	docker-compose run --rm php-cli composer update --ignore-platform-reqs --no-scripts
 
+composer-update-kernel:
+	docker-compose run --rm php-cli composer update digitalreputationcorp/search_systems:dev-master --ignore-platform-reqs
+
 test:
 	docker-compose run --rm php-cli composer test
 
